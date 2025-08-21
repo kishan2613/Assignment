@@ -1,12 +1,39 @@
-# React + Vite
+# Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## What’s this about?
 
-Currently, two official plugins are available:
+This project is a simple starter template to help you get up and running with React using Vite. It’s set up to give you a smooth development experience with things like hot-reloading (so your changes show up instantly) and some basic code quality checks with ESLint.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## What’s inside?
 
-## Expanding the ESLint configuration
+- React working seamlessly with Vite
+- Hot Module Replacement (HMR) for quick updates while you code
+- ESLint setup to help keep your code clean
+- Uses **Material UI** components for form input fields to make building forms easy and consistent
+- Styling powered by **Tailwind CSS** for quick and flexible design
+- Support for two React plugins in Vite:
+  - One using Babel for fast refresh
+  - Another using SWC for even faster refresh
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## How to get started?
+
+1. Grab a copy of this project by running:
+git clone https://github.com/kishan2613/Assignment.git
+2. Go into the project folder:
+cd Assignment
+3. Install all the necessary packages:
+npm install
+4. Fire up the development server:
+npm run dev
+
+## What’s used?
+
+- Mostly JavaScript (96.5%)
+- A little bit of HTML (3.5%)
+- React, Vite, ESLint
+- Material UI for form inputs
+- Tailwind CSS for styling
+
+## Want to help out?
+
+Awesome! Feel free to fork the repo, make your changes, and send a pull request.
