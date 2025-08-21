@@ -1,5 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  TextField,
+  Radio,
+  RadioGroup,
+  FormControlLabel,
+  FormControl,
+  FormLabel,
+  Button,
+  Box,
+  Paper,
+  Typography,
+} from "@mui/material";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -16,136 +28,150 @@ const Signup = () => {
     navigate("/profile");
   };
 
+  // Common style for all TextFields
+  const textFieldStyles = {
+    "& .MuiInputLabel-root": {
+      color: "#6C25FF", // label color
+    },
+    "& .MuiOutlinedInput-root": {
+      height: "50px", // reduce height
+      fontSize: "14px",
+      "& input": {
+        padding: "4px 6px", // reduce input padding
+      },
+    },
+  };
+
   return (
-    <div className="flex justify-center items-center bg-[#F7F8F9] ">    
-      {/* Container */}
-      <div className="w-screen md:w-96 min-h-screen p-6 bg-white shadow-md flex flex-col">
+    <Box
+      className="flex justify-center items-start bg-[#F7F8F9] min-h-screen "
+      component="div"
+    >
+      <Paper
+        elevation={3}
+        className="w-screen md:w-96  p-6 flex flex-col"
+        component="div"
+      >
         <form
           className="flex flex-col flex-grow justify-between"
           onSubmit={formHandler}
+          noValidate
+          autoComplete="off"
         >
-          <div className="flex flex-col">
-            <h1 className="text-2xl font-bold mb-4">
+          <Box className="flex flex-col">
+            <Typography variant="h5" fontWeight="bold" gutterBottom>
               Create your <br /> PopX account
-            </h1>
+            </Typography>
 
-            {/* Full Name */}
-            <label
-              htmlFor="fullName"
-              className="text-sm ml-2 mt-2 mb-1 font-semibold"
-            >
-              Full Name<span className="text-red-500">*</span>
-            </label>
-            <input
-              onChange={(e) => setFullName(e.target.value)}
+            <TextField
+              required
+              label="Full Name"
+              variant="outlined"
               value={fullName}
-              id="fullName"
-              type="text"
-              className="p-2 outline-none bg-transparent border-2 border-gray-300 rounded-lg focus:border-[#6C25FF]"
+              onChange={(e) => setFullName(e.target.value)}
+              margin="normal"
+              fullWidth
+              sx={textFieldStyles}
             />
 
-            {/* Phone Number */}
-            <label
-              htmlFor="phoneNumber"
-              className="text-sm ml-2 mt-2 mb-1 font-semibold"
-            >
-              Phone number<span className="text-red-500">*</span>
-            </label>
-            <input
-              onChange={(e) => setPhoneNumber(e.target.value)}
+            <TextField
+              required
+              label="Phone number"
+              variant="outlined"
               value={phoneNumber}
-              id="phoneNumber"
-              type="text"
-              className="p-2 outline-none bg-transparent border-2 border-gray-300 rounded-lg focus:border-[#6C25FF]"
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              margin="normal"
+              fullWidth
+              sx={textFieldStyles}
             />
 
-            {/* Email */}
-            <label
-              htmlFor="email"
-              className="text-sm ml-2 mt-2 mb-1 font-semibold"
-            >
-              Email address<span className="text-red-500">*</span>
-            </label>
-            <input
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-              id="email"
+            <TextField
+              required
+              label="Email address"
               type="email"
-              className="p-2 outline-none bg-transparent border-2 border-gray-300 rounded-lg focus:border-[#6C25FF]"
+              variant="outlined"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              margin="normal"
+              fullWidth
+              sx={textFieldStyles}
             />
 
-            {/* Password */}
-            <label
-              htmlFor="password"
-              className="text-sm ml-2 mt-2 mb-1 font-semibold"
-            >
-              Password <span className="text-red-500">*</span>
-            </label>
-            <input
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-              id="password"
+            <TextField
+              required
+              label="Password"
               type="password"
-              className="p-2 outline-none bg-transparent border-2 border-gray-300 rounded-lg focus:border-[#6C25FF]"
+              variant="outlined"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              margin="normal"
+              fullWidth
+              sx={textFieldStyles}
             />
 
-            {/* Company Name */}
-            <label
-              htmlFor="companyName"
-              className="text-sm ml-2 mt-2 mb-1 font-semibold"
-            >
-              Company name
-            </label>
-            <input
-              onChange={(e) => setCompanyName(e.target.value)}
+            <TextField
+              label="Company name"
+              variant="outlined"
               value={companyName}
-              id="companyName"
-              type="text"
-              className="p-2 outline-none bg-transparent border-2 border-gray-300 rounded-lg focus:border-[#6C25FF]"
+              onChange={(e) => setCompanyName(e.target.value)}
+              margin="normal"
+              fullWidth
+              sx={textFieldStyles}
             />
 
-            {/* Radio */}
-            <p className="mt-3 mb-2 ml-2">
-              Are you an Agency?<span className="text-red-500">*</span>
-            </p>
-            <div className="flex gap-6 ml-2">
-              <label className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  name="agency"
+            <FormControl component="fieldset" margin="normal">
+              <FormLabel
+                component="legend"
+                sx={{ color: "#6C25FF", fontWeight: "bold" }}
+              >
+                Are you an Agency?<span style={{ color: "#d32f2f" }}>*</span>
+              </FormLabel>
+              <RadioGroup
+                row
+                aria-label="agency"
+                name="agency"
+                value={agency}
+                onChange={(e) => setAgency(e.target.value)}
+              >
+                <FormControlLabel
                   value="yes"
-                  checked={agency === "yes"}
-                  onChange={() => setAgency("yes")}
-                  className="accent-[#6C25FF] scale-125"
+                  control={<Radio sx={{ color: "#6C25FF" }} />}
+                  label="Yes"
                 />
-                Yes
-              </label>
-              <label className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  name="agency"
+                <FormControlLabel
                   value="no"
-                  checked={agency === "no"}
-                  onChange={() => setAgency("no")}
-                  className="accent-[#6C25FF] scale-125"
+                  control={<Radio sx={{ color: "#6C25FF" }} />}
+                  label="No"
                 />
-                No
-              </label>
-            </div>
-          </div>
+              </RadioGroup>
+            </FormControl>
+          </Box>
 
-          {/* Sticky Button */}
-          <div className="mt-6 sticky bottom-0 bg-white py-2">
-            <button
+          <Box
+            mt={4}
+            sx={{
+              position: "sticky",
+              bottom: 0,
+              backgroundColor: "#fff",
+              py: 0,
+            }}
+          >
+            <Button
               type="submit"
-              className="p-3 bg-[#6C25FF] text-white rounded-lg font-medium hover:bg-[#5a1ee6] w-full text-lg"
+              variant="contained"
+              fullWidth
+              size="large"
+              sx={{
+                backgroundColor: "#6C25FF",
+                "&:hover": { backgroundColor: "#5a1fd1" },
+              }}
             >
               Create Account
-            </button>
-          </div>
+            </Button>
+          </Box>
         </form>
-      </div>
-    </div>
+      </Paper>
+    </Box>
   );
 };
 
